@@ -1,0 +1,39 @@
+﻿@model PersonalProject.Models.UpdataInfoModel
+
+@{
+    ViewData["Title"] = "UpdateInfo";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<link rel="stylesheet" href="~/css/UpdateInfo.css" />
+
+<div class="container mt-5">
+    <h1 class="mb-4">Update Your Personal Information !</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6 glass-effect">
+            <form method="post" class="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="text-white">Current Profile Picture :</label>
+                    <img src="@User.FindFirst("Image").Value" alt="Profile Image" class="img-thumbnail" height="200" width="200" />
+                </div>
+                <div class="form-group">
+                    <label class="text-white" asp-for="Image">New Profile Picture</label>
+                    <input asp-controller="Account" asp-action="UpdateInfo" asp-for="Image" type="text" class="form-control" placeholder="input new profile picture" />
+                </div>
+                <div class="form-group">
+                    <label class="text-white" asp-for="FirstName">Current First Name : @User.FindFirst("UserFirstName").Value</label>
+                    <input asp-controller="Account" asp-action="UpdateInfo" asp-for="FirstName" type="text" class="form-control" placeholder="input new First Name"/>
+                </div>
+                <div class="form-group">
+                    <label class="text-white" asp-for="LastName">Current Last Name : @User.FindFirst("UserLastName").Value</label>
+                    <input asp-controller="Account" asp-action="UpdateInfo" asp-for="LastName" type="text" class="form-control" placeholder="input new Last Name" />
+                </div>
+                <div class="form-group">
+                    <label class="text-white" asp-for="Gender">Current Gender : @User.FindFirst("Gender").Value</label>
+                    <input asp-controller="Account" asp-action="UpdateInfo" asp-for="Gender" type="text" class="form-control" placeholder="input new Gender Name" />
+                </div>
+                <button asp-controller="Main" asp-action="UpdateInfo" type="submit" class="btn btn-outline-success">Update Info</button>
+            </form>
+        </div>
+    </div>
+    <h1 class="text-success mt-3">@ViewBag.succ</h1>
+</div>

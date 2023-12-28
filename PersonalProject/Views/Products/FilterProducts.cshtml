@@ -1,0 +1,59 @@
+﻿@model List<PersonalProject.Models.Product>
+
+@{
+    ViewData["Title"] = "FilterProducts";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/AdminViewProducts.css" />
+<link rel="stylesheet" href="~/css/CardStyling.css" />
+
+<h1>Filtered Products</h1>
+
+<h2>Sort products : </h2>
+<div class="filter-buttons">
+    <a asp-action="FilterProducts" asp-route-filter="HighToLowPrice" class="btn btn-secondary">High to Low Price</a>
+    <a asp-action="FilterProducts" asp-route-filter="LowToHighPrice" class="btn btn-secondary">Low to High Price</a>
+    <a asp-action="FilterProducts" asp-route-filter="OrderByAlphaBetAsend" class="btn btn-secondary">A to Z</a>
+    <a asp-action="FilterProducts" asp-route-filter="OrderByAlphaBetDesend" class="btn btn-secondary">Z to A</a>
+</div>
+
+<br />
+<div class="row mx-auto">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 product-card">
+            <a asp-action="Details" asp-route-id="@item.Id" class="card-link">
+                <div class="card mb-4 border border-5 border-dark CStyle">
+                    @if (item.ImageUri != null)
+                    {
+                        <img src="@item.ImageUri" class="card-img-top" alt="@item.ProductName" width="200" height="200">
+                    }
+                    else
+                    {
+                        <p class="card-text">No Image Available</p>
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@item.ProductName</h5>
+                        <p class="card-text">@item.Description</p>
+                        <p class="card-text">$@item.Price</p>
+
+                        <div class="btn-group" role="group">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary ms-2">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger ms-2">Delete</a>
+                            <form method="post" asp-controller="Products" asp-action="AddToCart" class="ms-2">
+                                <input type="hidden" name="productId" value="@item.Id" />
+                                <button type="submit" class="btn btn-success">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+
+<div>
+    <a asp-action="ViewAllProducts" class="btn btn-primary">Back to All Products</a>
+</div>

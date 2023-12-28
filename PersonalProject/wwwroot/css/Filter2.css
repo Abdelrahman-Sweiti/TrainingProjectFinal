@@ -1,0 +1,143 @@
+﻿body {
+    animation: changeBgColor 14s infinite alternate;
+    background-color: rgba(45, 225, 30, 0.6);
+    transition: background-color 1s ease-in-out;
+    position: relative;
+}
+
+    body::before {
+        content: '';
+        top: 0;
+        left: 0;
+        position: fixed; /* Fixed position to cover the entire viewport */
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: -1;
+    }
+
+@keyframes changeBgColor {
+    0% {
+        background-color: rgba(45, 225, 30, 0.6);
+    }
+
+    12.5% {
+        background-color: rgba(30, 225, 213, 0.6);
+    }
+
+    25% {
+        background-color: rgba(25, 27, 178, 0.6);
+    }
+
+    37.5% {
+        background-color: rgba(110, 15, 175, 0.6);
+    }
+
+    50% {
+        background-color: rgba(158, 15, 32, 0.6);
+    }
+
+    62.5% {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    75% {
+        background-color: rgba(193, 38, 183, 0.6);
+    }
+
+    87.5% {
+        background-color: rgba(35, 36, 42, 0.6);
+    }
+
+    100% {
+        background-color: rgba(225, 112, 26, 0.6); /* Add more colors as needed */
+    }
+}
+
+
+.glass-effect {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 7px 7px 15px black;
+}
+
+h1 {
+    font-weight: bold;
+    color: floralwhite;
+}
+
+h2 {
+    font-weight: bold;
+    color: floralwhite;
+}
+
+.col-md-3 {
+    width: 22% !important;
+}
+
+p {
+    font-weight: bold;
+}
+
+
+
+.filter-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.product-card {
+    margin-bottom: 20px;
+    max-width: 300px;
+    background-color: #f9f9f9; /* Background color */
+    border: 1px solid #e0e0e0; /* Border color */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+.product-image {
+    max-height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #ddd; /* Border for the image */
+    background-color: azure;
+}
+
+    .product-image img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.2s;
+    }
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.product-details {
+    padding: 16px;
+}
+
+    .product-details h5 {
+        font-weight: bold;
+        color: #333; /* Text color for title */
+    }
+
+    .product-details p {
+        color: #666; /* Text color for description */
+    }
+
+
+    
+
+
+.filter-dropdown {
+    margin-top: 20px;
+}
+
+    .filter-dropdown .dropdown-toggle {
+        margin-bottom: 13px; /* Adjust the margin to create the desired space */
+    }

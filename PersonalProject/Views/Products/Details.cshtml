@@ -1,0 +1,76 @@
+﻿@model PersonalProject.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<link rel="stylesheet" href="~/css/ProdDetails.css" />
+
+<div class="container mt-5">
+    <h1 class="text-center">Product Details</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12 glass-effect p-4">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    @if (Model.ImageUri != null)
+                    {
+                        <img src="@Model.ImageUri" alt="@Model.ProductName" class="img-fluid rounded image-border" width="250" height="250">
+                    }
+                    else
+                    {
+                        <p>No Image Available</p>
+                    }
+                </div>
+
+                <div class="col-md-8">
+                    <h4>@Model.ProductName</h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h5>Price</h5>
+                        </div>
+                        <div class="col-sm-8">
+                            <p>@Model.Price</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h5>Description</h5>
+                        </div>
+                        <div class="col-sm-8">
+                            <p>@Model.Description</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h5>Categories</h5>
+                        </div>
+                        <div class="col-sm-8">
+                            <ul>
+                                @foreach (var category in Model.productsCategories)
+                                {
+                                    <li>@category.category.Name</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h5>Actions</h5>
+                            </div>
+                            <div class="col-sm-8">
+                                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">Edit</a>
+                                <a asp-action="ViewAllProducts" class="btn btn-outline-secondary">Back to List</a>
+                                <a asp-action="AddCategoryToProduct" asp-route-ProductId="@Model.Id" class="btn btn-outline-info">Add to Category</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

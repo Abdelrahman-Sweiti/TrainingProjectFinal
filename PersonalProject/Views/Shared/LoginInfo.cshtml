@@ -1,0 +1,88 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signinManager
+<style>
+    li a .badge {
+        font-size: 15px;
+        font-weight: bold !important;
+        color: red !important;
+
+        
+    }
+
+    .btn {
+    font-weight:bold;
+    
+    }
+  
+</style>
+
+<ul class="navbar-nav ms-auto">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="btn btn-outline-success me-2" asp-controller="Main" asp-action="Register">Register</a>
+
+        </li>
+
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+
+        
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Carts" asp-action="Index">
+                My Cart  
+            </a>
+        </li>
+       
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+                Hello @(User.FindFirst("UserFirstName").Value + " " + User.FindFirst("UserLastName").Value)
+            </a>
+            <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" asp-controller="Main" asp-action="Profile">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" asp-controller="Main" asp-action="Logout">Logout</a></li>
+@*                 <li><hr class="dropdown-divider"></li>
+ *@@*                 <li><a class="dropdown-item" asp-controller="Account" asp-action="ChangePassword">Change Password</a></li>
+ *@            </ul>
+        </li>
+
+      
+
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="btn btn-outline-success me-2" asp-controller="Main" asp-action="Register">Register</a>
+            <a class="btn btn-outline-primary" asp-controller="Main" asp-action="Login">Login</a>
+        </li>
+    }
+</ul>
+
+
+
+
+
+
+
+
+
+
+@* cart proxy code*@
+
+@*  (<span id="cartItemCount" class="badge badge-danger">0</span>)  *@
+ @* @if (User.Identity.IsAuthenticated)
+{
+    <script>
+        function updateCartItemCount(count) {
+            var cartItemCountElement = document.getElementById("cartItemCount");
+            if (cartItemCountElement) {
+                cartItemCountElement.textContent = count;
+            }
+        }
+
+        updateCartItemCount(@Model.Count);
+    </script>
+} *@
+ 

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PersonalProject.Models.Product>
+
+@{
+    ViewData["Title"] = "Rows";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/RowsStyle.css" />
+
+<h2>Results</h2>
+<br />
+
+<div class="row mx-auto">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 product-card">
+            <a asp-action="Details" asp-route-id="@item.Id" class="card-link">
+                <div class="card border-0">
+                    <div class="product-image">
+                        @if (item.ImageUri != null)
+                        {
+                            <img src="@item.ImageUri" alt="@item.ProductName" width="200" height="200">
+                        }
+                        else
+                        {
+                            <p class="card-text">No Image Available</p>
+                        }
+                    </div>
+                    <div class="product-details">
+                        <h5 class="card-title">@item.ProductName</h5>
+                        <p class="card-text">@item.Description</p>
+                        <p class="card-text">$@item.Price</p>
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <div class="btn-group" role="group">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary ms-2">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger ms-2">Delete</a>
+                                <form method="post" asp-controller="Products" asp-action="AddToCart" class="mb-0">
+                                    <input type="hidden" name="productId" value="@item.Id" />
+                                    <button type="submit" class="btn btn-success ms-2">Add to Cart</button>
+                                </form>
+                            </div>
+                        }
+                        else if (User.Identity.IsAuthenticated)
+                        {
+                            <form method="post" asp-controller="Products" asp-action="AddToCart">
+                                <input type="hidden" name="productId" value="@item.Id" />
+                                <button type="submit" class="btn btn-success ms-2">Add to Cart</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>

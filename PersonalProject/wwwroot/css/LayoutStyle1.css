@@ -1,0 +1,102 @@
+﻿
+
+body {
+    padding-top: 70px;
+}
+
+
+ header nav {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255,255,255);
+    font-weight: bold;
+}
+.navbar-nav .nav-link:hover:first-child {
+    color: gold;
+    font-weight: bold;
+}
+
+.nav-item .dropdown-menu  {
+ padding:0;
+
+}
+
+.nav-item .dropdown-menu .dropdown-item:hover {
+    background-color: green;
+    font-weight:bold;
+}
+
+
+.custom-dropdown {
+    background-color: #fff; 
+    border: none; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+   
+    .custom-dropdown .dropdown-item {
+        color: #333; 
+        padding: 10px 20px; 
+        transition: background-color 0.3s; 
+    }
+
+        .custom-dropdown .dropdown-item:hover {
+            background-color: #f8f9fa; 
+        }
+
+
+
+
+
+/* Custom CSS for responsive search item placement */
+@media (max-width: 768px) {
+    .Search-item {
+        order: -1;
+        margin-left: auto;
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 575px) {
+    .Search-item {
+        display: flex;
+        align-items: center;
+    }
+
+        .Search-item .input-group {
+            width: 100%;
+        }
+
+        .Search-item .input-group-append {
+            margin-left: auto;
+        }
+}
+
+
+.active-cyan-2 input.form-control[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #4dd0e1 !important;
+    box-shadow: 0 1px 0 0 #4dd0e1 !important;
+}
+
+.active-cyan input.form-control[type=text] {
+    border-bottom: 1px solid #4dd0e1 !important;
+    box-shadow: 0 1px 0 0 #4dd0e1 !important;
+}
+
+.active-cyan .fa, .active-cyan-2 .fa {
+    color: #4dd0e1 !important;
+}
+
+.search-bar {
+    width: 200px;
+    display: inline-block;
+    position: relative;
+}
+
+.search-input {
+    display: none;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}

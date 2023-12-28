@@ -1,0 +1,54 @@
+﻿@model PersonalProject.Models.ProductsCategory
+
+@{
+    ViewData["Title"] = "AddProductToCategories";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/CateToProduct.css" />
+
+<div class="container mt-5">
+    <div class="row justify-content-center ">
+        <div class="col-md-6 ">
+            <!-- Center the card both vertically and horizontally -->
+            <div class="card glass-effect text-light">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Add New Product to @ViewData["CategoryName"] Category</h4>
+
+                    <form asp-action="AddProductToCategories" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <input hidden asp-for="CategoryId" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ProductName">Name</label>
+                            <input asp-for="product.ProductName" class="form-control" id="ProductName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Price">Price</label>
+                            <input asp-for="product.Price" class="form-control" id="Price">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            <input asp-for="product.Description" class="form-control" id="Description">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="file">Upload Image:</label>
+                            <input type="file" id="file" name="file" class="form-control">
+                        </div>
+
+                        <div class="form-group text-center mt-3">
+                            <button type="submit" class="btn btn-primary m-1">Create</button> |
+                            <a asp-action="Index" class="btn btn-secondary m-1">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

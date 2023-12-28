@@ -1,0 +1,59 @@
+﻿html {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body {
+    background-image: url(https://wallpaperaccess.com/full/231689.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+
+.product-container {
+    display:flex;
+
+}
+
+.product {
+    background-color: rgb(50 195 209);
+    outline: 3px solid black;
+    width: 200px;
+    margin-left: 20px;
+}
+
+.search-bar {
+    border: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+    .search-bar:focus {
+        border-color: #007bff; /* Change to your desired highlight color */
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Change to your desired box shadow */
+    }
+
+.search-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn {
+
+font-weight:bold;
+}
+
+h1 {
+    font-weight: bold;
+    color: floralwhite;
+}
+
+h2 {
+    font-weight: bold;
+    color: floralwhite;
+}
+

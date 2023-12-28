@@ -1,0 +1,57 @@
+﻿@model List<PersonalProject.Models.Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/AccIndex.css" />
+
+<div class="container mt-5">
+    <!-- Sliding Image Banners -->
+    <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#bannerCarousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#bannerCarousel" data-bs-slide-to="1"></li>
+@*             <li data-bs-target="#bannerCarousel" data-bs-slide-to="2"></li>
+ *@        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active ">
+                <img src="https://i.ytimg.com/vi/1M2aJ6VUHU0/hqdefault.jpg" class="d-block w-100" alt="Image 1" height="320" width="320">
+            </div>
+            <div class="carousel-item">
+                <img src="https://d1rw89lz12ur5s.cloudfront.net/photo/gamenation/file/87779a9b8a5a403d919f1fd1aa0bbaec/RARITY.png" class="d-block w-100" alt="Image 2">
+            </div>
+          @*   <div class="carousel-item">
+                <img src="https://i.imgur.com/fDukETN.png" class="d-block w-100" alt="Image 3">
+            </div> *@
+        </div>
+        <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#bannerCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+
+    <div class="row mt-4">
+        @foreach (var category in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@category.CategoryCover" class="card-img-top" alt="Category Image" width="400" height="400">
+                    <div class="card-body">
+                        <h5 class="card-title">@category.Name</h5>
+                        <a href="@Url.Action("GetAllProductsForCategory", "Categories", new { CategoryId = category.Id })" class="btn btn-primary">View Products</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+  
+
+
+
+

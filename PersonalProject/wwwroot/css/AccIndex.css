@@ -1,0 +1,49 @@
+﻿html {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+
+/* Solid Color Background */
+/* Solid Color Background */
+body {
+    background: linear-gradient(135deg, #FDFCFB, #E2D1C3); /* Gradient colors */
+    color: #fff; /* Text color (white) */
+    font-family: Arial, sans-serif; /* Choose your preferred font */
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+
+
+
+
+
+.glass-effect {
+    background-color: rgba(255, 255, 255);
+    color: black;
+    padding: 30px;
+    outline:2px solid black;
+     margin-bottom:10px;
+}
+
+
+/* Style the <hr> element */
+hr {
+    border: none; /* Remove default border */
+    height: 3px; /* Set the height (thickness) */
+    background-color: #000; /* Set the color of the line */
+    margin: 20px 0; /* Adjust the top and bottom margin as needed */
+}
+
+

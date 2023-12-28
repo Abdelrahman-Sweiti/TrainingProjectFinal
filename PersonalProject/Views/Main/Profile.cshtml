@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/Profile.css" />
+
+<div class="container mt-5">
+    <div class="row justify-content-center mt-4">
+
+    <div class="col-md-6 text-center">
+        <h1 class="mb-4">Profile</h1>
+
+</div>
+</div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 glass-effect">
+            <div class="d-flex align-items-center mb-4">
+            </div>
+            <table class="table">
+                <tr>
+                    <th>Profile Picture</th>
+                    <td>
+                        <img src="@User.FindFirst("Image").Value" alt="Profile Image" class="img-thumbnail" height="200" width="200" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>First Name</th>
+                    <td>@User.FindFirst("UserFirstName").Value</td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td>@User.FindFirst("UserLastName").Value</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>@User.FindFirst("Gender").Value</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>@User.FindFirst("Email").Value</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6 text-center">
+            <a asp-controller="Main" asp-action="UpdateInfo" class="btn btn-warning">Update Info</a>
+        </div>
+    </div>
+</div>

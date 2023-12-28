@@ -1,0 +1,38 @@
+﻿
+.glass-effect {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 7px 7px 15px black;
+
+}
+
+
+
+.CStyle {
+
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.col-md-3 {
+    width: 20% !important;
+}
+
+.product-card {
+    transition: transform 0.2s;
+
+}
+
+    .product-card:hover {
+        transform: scale(1.05);
+
+    }
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+.card:hover {
+ background-color:antiquewhite;
+
+}

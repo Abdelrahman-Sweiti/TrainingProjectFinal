@@ -1,0 +1,38 @@
+﻿.product-image {
+    width: 406px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.btn-group .btn {
+    white-space: nowrap;
+}
+
+.custom-container {
+    width: 1800px;
+    height: 360px;
+}
+
+.custom-container2 {
+    width: 700px;
+    / height: 360px;
+}
+
+.custom-containerx {
+    width: 1800px;
+    height: 360px;
+}
+
+.btn-group a {
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.custom-logo {
+    width: 200px;
+    height: 200px;
+}
+
+.custom-logo2 {
+    width: 50px;
+    height: 50px;
+}

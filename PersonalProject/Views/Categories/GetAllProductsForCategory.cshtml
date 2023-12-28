@@ -1,0 +1,89 @@
+﻿@model List<PersonalProject.Models.ProductsCategory>
+
+@{
+    ViewData["Title"] = "GetAllProductsForCategory";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+ <link rel="stylesheet" href="~/css/ProdToCategory.css" />
+
+
+<div class="container">
+    <h1 class="text-center mt-5">@ViewData["CategoryName"] Products</h1>
+
+    <div class="filter-container">
+        <h2 class="mt-3">Sort products:</h2>
+        <div class="filter-dropdown">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filter Options
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="FilterProductsByCategory" asp-route-categoryId="@Model.FirstOrDefault()?.category.Id" asp-route-filter="HighToLowPrice">High to Low Price</a></li>
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="FilterProductsByCategory" asp-route-categoryId="@Model.FirstOrDefault()?.category.Id" asp-route-filter="LowToHighPrice">Low to High Price</a></li>
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="FilterProductsByCategory" asp-route-categoryId="@Model.FirstOrDefault()?.category.Id" asp-route-filter="OrderByAlphaBetAsend">A to Z</a></li>
+                    <li><a class="dropdown-item" asp-controller="Products" asp-action="FilterProductsByCategory" asp-route-categoryId="@Model.FirstOrDefault()?.category.Id" asp-route-filter="OrderByAlphaBetDesend">Z to A</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var productCategory in Model)
+        {
+            <div class="col">
+                <div class="product-card">
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@productCategory.product.Id" class="card-link">
+                        <div class="card border-0">
+                            <div class="product-image">
+                                <a href="@Url.Action("Details", "Products", new { id = productCategory.product.Id })">
+                                    @if (productCategory.product.ImageUri != null)
+                                    {
+                                        <img src="@productCategory.product.ImageUri" alt="@productCategory.product.ProductName">
+                                    }
+                                    else
+                                    {
+                                        <p class="card-text">No Image Available</p>
+                                    }
+                                </a>
+                            </div>
+                            <div class="product-details">
+                                <h5 class="card-title">@productCategory.product.ProductName</h5>
+                                <p class="card-text">@((productCategory.product.Description.Length > 50) ? productCategory.product.Description.Substring(0, 50) : productCategory.product.Description)</p>
+                                <p class="card-text">$@productCategory.product.Price</p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="btn-group">
+                                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                        {
+                                            <a asp-controller="Products" asp-action="Edit" asp-route-id="@productCategory.product.Id" class="btn btn-primary btn-sm">Edit</a>
+                                            <a asp-controller="Products" asp-action="Delete" asp-route-id="@productCategory.product.Id" class="btn btn-danger btn-sm">Delete</a>
+                                        }
+                                    </div>
+                                    @if (User.Identity.IsAuthenticated )
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <form method="post" asp-controller="Products" asp-action="AddToCart">
+                                                <input type="hidden" name="productId" value="@productCategory.product.Id" />
+                                                <div class="input-group">
+                                                    <input type="number" name="quantity" value="1" min="1" class="form-control" />
+                                                    <button type="submit" class="btn btn-success btn-sm">Add to Cart</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <div class="text-center mt-4">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    }
+</div>
